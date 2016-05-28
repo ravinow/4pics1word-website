@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
+    
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
+    
+    <h:head>
+        <title>4Pics1Word Tips</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    
+    <h:body>
+         <pm:page>
+            <pm:header title="Tips for 4 Pics 1 Word"></pm:header>
+            <pm:content>
+                <h:form>
+                    <pm:field>
+                        <p:outputLabel for="wordTemplate" value="Word Template:" />
+                        <p:inputText id="wordTemplate" value="#{paramBean.wordTemplate}"/>
+                    </pm:field>
+                    <pm:field>
+                        <p:outputLabel for="availableLetters" value="Available Letters:" />
+                        <p:inputText id="availableLetters" value="#{paramBean.availableLetters}"/>
+                    </pm:field>
+                    <p:commandButton value="Search" update="rspanel" actionListener="#{paramBean.search()}"/>
+                    <br/>
+                    <p:outputPanel id="rspanel">
+                        <p:dataList value="#{paramBean.result}" var="word">
+                            <h:outputText value="#{word.toString()}" />
+                        </p:dataList>
+                    </p:outputPanel>
+                </h:form>
+            </pm:content>
+        </pm:page>
+    </h:body>
+</html>
+
